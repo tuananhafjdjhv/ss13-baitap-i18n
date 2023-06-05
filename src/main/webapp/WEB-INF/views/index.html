@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<h1 th:text="#{table.label}"></h1>
+Language: <a href="?lang=en">English</a> | <a href="?lang=jav">日本語</a> | <a href="?lang=vi">Tiếng việt</a>
+ <p> <a href="" th:text="#{table.action.create}"></a></p>
+<table>
+    <thead>
+    <tr>
+        <th th:text="#{table.name}"></th>
+        <th th:text="#{table.age}"></th>
+        <th colspan="2" th:text="#{table.action}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="customer : ${customer}">
+        <tr>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.age}"></td>
+            <td><a th:href="@{'/delete/' + ${customer.id}}" th:text="#{table.action.delete}"></a></td>
+            <td><a th:href="@{'/edit/' + ${customer.id}}" th:text="#{table.action.edit}"></a></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>
